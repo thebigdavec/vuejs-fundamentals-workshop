@@ -17,9 +17,11 @@
                 {{candidate.name}} - {{candidate.votes}} -
                 <button @click="increaseVotes(candidate)">Vote for {{candidate.name}}</button>
             </div>
-            <label for="newUser"></label>
-            <input id="newUser" type="text" v-model="newUser" />
-            <button type="submit" @click.prevent="addNewUser">Submit</button>
+            <form>
+                <label for="newUser"></label>
+                <input id="newUser" type="text" v-model="newUser" />
+                <button @click.prevent="addNewUser">Submit</button>
+            </form>
         </div>
     </div>
 

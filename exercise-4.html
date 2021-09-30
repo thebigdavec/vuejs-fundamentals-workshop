@@ -15,7 +15,7 @@
             <h1>Candidates</h1>
             <div v-for="candidate in candidates" :key="candidate.name">
                 {{candidate.name}} - {{candidate.votes}} -
-                <button @click="increaseVotes(candidate)">Vote for {{candidate.name}}</button>
+                <button @click="increaseVotes(candidate)">Vote</button>
             </div>
             <form>
                 <label for="newUser"></label>

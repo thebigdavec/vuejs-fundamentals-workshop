@@ -11,13 +11,31 @@
 
 <body>
     <div id="app">
-
+        <div v-for="user in users" :key="user.name">
+            <h1>{{user.name}}</h1>
+            <ul>
+                <li v-for="hobby in user.hobbies" :key="user.name + hobby">
+                    {{hobby}}
+                </li>
+            </ul>
+        </div>
     </div>
 
     <script>
         const App = {
             data() {
-                return {}
+                return {
+                    users: [{
+                        name: 'Alex',
+                        hobbies: ['coding', 'movies', 'techno party', 'boardgames']
+                    }, {
+                        name: 'Rolf',
+                        hobbies: ['golf', 'food', 'dancing']
+                    }, {
+                        name: 'Maria',
+                        hobbies: ['coding', 'swimming', 'boardgames']
+                    }]
+                }
             }
         }
         Vue.createApp(App).mount('#app')

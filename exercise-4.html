@@ -11,10 +11,15 @@
 
 <body>
     <div id="app">
-        <h1>Candidates</h1>
-        <div v-for="candidate in candidates" :key="candidate.name">
-            {{candidate.name}} - {{candidate.votes}} -
-            <button @click="increaseVotes(candidate)">Vote</button>
+        <div @keydown.esc="resetVotes">
+            <h1>Candidates</h1>
+            <div v-for="candidate in candidates" :key="candidate.name">
+                {{candidate.name}} - {{candidate.votes}} -
+                <button @click="increaseVotes(candidate)">Vote for {{candidate.name}}</button>
+            </div>
+            <label for="newUser"></label>
+            <input id="newUser" type="text" v-model="newUser" />
+            <button type="submit" @click.prevent="addNewUser">Submit</button>
         </div>
     </div>
 
@@ -32,11 +37,25 @@
                         name: 'Paul',
                         votes: 0
                     }, ],
+                    newUser: ''
                 }
             },
             methods: {
                 increaseVotes(candidate) {
                     candidate.votes++
+                },
+                addNewUser() {
+                    if (!this.newUser) return
+                    this.candidates.push({
+                        name: this.newUser,
+                        votes: 0
+                    })
+                    this.newUser = ''
+                },
+                resetVotes() {
+                    this.candidates.forEach(candidate => {
+                        candidate.votes = 0
+                    })
                 }
             }
         }

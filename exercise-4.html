@@ -11,14 +11,29 @@
 
 <body>
     <div id="app">
-
+        <h1>Candidates</h1>
+        <div v-for="candidate in candidates" :key="candidate.name">{{candidate.name}} - {{candidate.votes}} - <button @click="increaseVotes(candidate)">Vote</button></div>
     </div>
 
     <script>
         const App = {
             data() {
                 return {
-
+                    candidates: [{
+                        name: 'Eric',
+                        votes: 0
+                    }, {
+                        name: 'Dave',
+                        votes: 0
+                    }, {
+                        name: 'Paul',
+                        votes: 0
+                    }, ],
+                }
+            },
+            methods: {
+                increaseVotes(candidate) {
+                    candidate.votes++
                 }
             }
         }

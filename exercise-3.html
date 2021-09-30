@@ -12,7 +12,7 @@
 <body>
     <div id="app">
         <div v-for="user in users" :key="user.name">
-            <h1>{{user.name}}</h1>
+            <h2>{{user.name}}</h2>
             <ul>
                 <li v-for="hobby in user.hobbies" :key="user.name + hobby">
                     {{hobby}}

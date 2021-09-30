@@ -11,16 +11,16 @@
 
 <body>
     <div id="app">
-        <div @keydown.esc="resetVotes">
+        <div @keyup.esc="resetVotes">
             <h1>Candidates</h1>
             <div v-for="candidate in candidates" :key="candidate.name">
                 {{candidate.name}} - {{candidate.votes}} -
                 <button @click="increaseVotes(candidate)">Vote</button>
             </div>
-            <form>
+            <form @submit.prevent="addNewUser">
                 <label for="newUser">Add new candidate</label>
                 <input id="newUser" type="text" v-model="newUser" />
-                <button @click.prevent="addNewUser">Submit</button>
+                <button>Submit</button>
             </form>
         </div>
     </div>
@@ -30,15 +30,18 @@
             data() {
                 return {
                     candidates: [{
+                        id: 'arse',
                         name: 'Eric',
                         votes: 0
                     }, {
+                        id: 'butt',
                         name: 'Dave',
                         votes: 220
                     }, {
+                        id: 'cushion',
                         name: 'Paul',
                         votes: 0
-                    }, ],
+                    }],
                     newUser: ''
                 }
             },
@@ -49,6 +52,7 @@
                 addNewUser() {
                     if (!this.newUser) return
                     this.candidates.push({
+                        id: this.newUser + toString(Math.random()),
                         name: this.newUser,
                         votes: 0
                     })

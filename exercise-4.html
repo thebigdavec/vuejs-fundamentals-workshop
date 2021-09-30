@@ -12,7 +12,10 @@
 <body>
     <div id="app">
         <h1>Candidates</h1>
-        <div v-for="candidate in candidates" :key="candidate.name">{{candidate.name}} - {{candidate.votes}} - <button @click="increaseVotes(candidate)">Vote</button></div>
+        <div v-for="candidate in candidates" :key="candidate.name">
+            {{candidate.name}} - {{candidate.votes}} -
+            <button @click="increaseVotes(candidate)">Vote</button>
+        </div>
     </div>
 
     <script>
@@ -24,7 +27,7 @@
                         votes: 0
                     }, {
                         name: 'Dave',
-                        votes: 0
+                        votes: 220
                     }, {
                         name: 'Paul',
                         votes: 0
